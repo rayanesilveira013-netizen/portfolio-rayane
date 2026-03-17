@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer & Criativa | Portfólio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FFB6C1; /* Rosa Claro */
+            --bg-dark: #0D0D0D; /* Preto */
+            --text-light: #FFFFFF;
+            --text-gray: #A0A0A0;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 182, 193, 0.1);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.05) 0%, transparent 40%);
+        }
+
+        .badge {
+            background: rgba(255, 182, 193, 0.15);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: rgba(255, 182, 193, 0.3);
+        }
+
+        /* --- About --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: #1a1a1a;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* --- Projects --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #151515;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .project-img {
+            height: 220px;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            position: relative;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+
+        /* --- Certificates --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-item {
+            padding: 20px;
+            border-left: 2px solid var(--primary);
+            background: #151515;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: #222;
+        }
+
+        .status-completed { color: #82dd55; }
+        .status-ongoing { color: #f1c40f; }
+
+        /* --- Contact --- */
+        .contact-container {
+            text-align: center;
+            background: var(--primary);
+            color: var(--bg-dark);
+            padding: 80px 20px;
+            border-radius: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--bg-dark);
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            section { padding: 60px 5%; }
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">RAYANE SILVA</a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#certificados">Certificados</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">Disponível para estágio</div>
+        <h1>Criatividade que comunica.</h1>
+        <p>Estudante de Informática e entusiasta do design visual. Transformo ideias em experiências digitais organizadas e marcantes.</p>
+        <a href="#projetos" class="btn">Ver projetos</a>
+    </section>
+
+    <section id="sobre" class="reveal">
+        <h2 class="section-title">Sobre mim</h2>
+        <div class="about-content">
+            <div>
+                <p>Olá! Sou estudante do 3º ano do Ensino Médio Técnico em Informática. Minha paixão é unir a lógica da tecnologia com a sensibilidade do design. Procuro sempre aprender novas formas de criar conteúdos que engajam e comunicam a essência de cada marca.</p>
+                <br>
+                <p>Minha abordagem foca na <strong>dedicação, organização e busca constante por referências modernas</strong>.</p>
+            </div>
+            <div>
+                <h3>Ferramentas & Skillset</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag">Canva</div>
+                    <div class="skill-tag">Figma (Básico)</div>
+                    <div class="skill-tag">Photoshop</div>
+                    <div class="skill-tag">HTML5 / CSS3</div>
+                    <div class="skill-tag">CapCut</div>
+                    <div class="skill-tag">UI Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="reveal">
+        <h2 class="section-title">Projetos em Destaque</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    [Mockup de Branding Minimalista]
+                </div>
+                <div class="project-info">
+                    <span class="tag">Identidade Visual</span>
+                    <h3>EcoVibe Store</h3>
+                    <p>Criação de logotipo e paleta de cores para uma marca fictícia de produtos sustentáveis.</p>
+                    <div class="tags">
+                        <span class="tag">Conceito</span>
+                        <span class="tag">Logo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    [Preview de Posts para Instagram]
+                </div>
+                <div class="project-info">
+                    <span class="tag">Social Media</span>
+                    <h3>Campanha Verão 2024</h3>
+                    <p>Conjunto de 9 posts e 5 stories focados em conversão e engajamento visual.</p>
+                    <div class="tags">
+                        <span class="tag">Engajamento</span>
+                        <span class="tag">Layout</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    [Design de Convite Interativo]
+                </div>
+                <div class="project-info">
+                    <span class="tag">Digital Design</span>
+                    <h3>Convite Criativo: Tech Meet</h3>
+                    <p>Convite digital interativo com botões para RSVP e localização para evento de tecnologia.</p>
+                    <div class="tags">
+                        <span class="tag">Interatividade</span>
+                        <span class="tag">UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    [Antes e Depois de Perfil]
+                </div>
+                <div class="project-info">
+                    <span class="tag">Redesign</span>
+                    <h3>Profile Glow Up</h3>
+                    <p>Estudo de caso de redesign de biografia, destaques e padrão visual de um perfil profissional.</p>
+                    <div class="tags">
+                        <span class="tag">Estratégia</span>
+                        <span class="tag">Visual</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="certificados" class="reveal">
+        <h2 class="section-title">Certificados</h2>
+        <div class="cert-grid">
+            <div class="cert-item">
+                <h4>Fundamentos do Design Gráfico</h4>
+                <p>Fundação Bradesco</p>
+                <span class="status-badge status-completed">Concluído</span>
+            </div>
+             <div class="cert-item">
+                <h4>HCCDA - Tech Essentials Course</h4>
+                <p>HUAWEI ICT ACADEMY</p>
+                <span class="status-badge status-completed">Concluído</span>
+            </div>
+             <div class="cert-item">
+                <h4>Atendimento ao Público</h4>
+                <p>Fundação Bradesco</p>
+                <span class="status-badge status-completed">Concluído</span>
+            </div>
+            <div class="cert-item">
+                <h4>Técnico em Informática</h4>
+                <p>Instituição de Ensino</p>
+                <span class="status-badge status-ongoing">Em andamento (2026)</span>
+            </div>
+             <div class="cert-item">
+                <h4>Fotografias com Dispositivos Móveis</h4>
+                <p>Fundação Bradesco</p>
+                <span class="status-badge status-completed">Concluído</span>
+            </div>
+            <div class="cert-item">
+                <h4>Microsoft Excel 2016</h4>
+                <p>Fundação Bradesco</p>
+                <span class="status-badge status-ongoing">Cursando</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="reveal">
+        <div class="contact-container">
+            <h2>Vamos criar algo incrível juntos?</h2>
+            <p>Estou em busca de oportunidades para aplicar meus conhecimentos e crescer profissionalmente.</p>
+            <div class="contact-links">
+                <a href="mailto:seuemail@gmail.com">E-mail</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Behance</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: var(--text-gray); font-size: 0.8rem;">
+        &copy; 2026 - Desenvolvido com dedicação por [Seu Nome].
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Inicializar reveal no carregamento
+        reveal();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '15px 10%';
+                nav.style.background = 'rgba(13, 13, 13, 0.95)';
+            } else {
+                nav.style.padding = '20px 10%';
+                nav.style.background = 'rgba(13, 13, 13, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
